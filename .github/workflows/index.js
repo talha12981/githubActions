@@ -18,6 +18,14 @@ fs.readFile(filePath, "utf8", (err, data) => {
     console.log("File content:");
     console.log(data);
 
+    fs.writeFile(filePath, `${data}console.log("Updated");`, "utf8", err => {
+      if (err) {
+        console.error(`Error writing to the file: ${err.message}`);
+      } else {
+        console.log("Content has been written to the file.");
+      }
+    });
+
     // You can perform additional processing on the file content here
   }
 });
