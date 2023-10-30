@@ -20,9 +20,9 @@ jobs:
                 CODE_TO_SEND: |
                   "${{file}}"
           done
-      
+
       - name: Run index.js
-          run: node index.js
+        run: node index.js
       - name: Commit and Push Changes
         run: |
           git config --global user.email "chtalha.anjum@gmail.com"
