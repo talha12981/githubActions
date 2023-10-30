@@ -19,7 +19,7 @@ jobs:
               env:
                 CODE_TO_SEND: |
                   "${{file}}"
-        done
+          done
       
       - name: Run index.js
           run: node index.js
