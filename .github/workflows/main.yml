@@ -11,18 +11,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Modify Code
+      - name: List changed files
+        id: changes
         run: |
-          for file in $(git diff --name-only ); do
-            
-            - name: Set up environment
-              env:
-                CODE_TO_SEND: |
-                  "${{file}}"
+          echo "::set-output name=changed_files::$(git diff --name-only)"
+        shell: bash
+
+      - name: Process Changes
+        run: |
+          changed_files="${{ steps.changes.outputs.changed_files }}"
+          for file in $changed_files; do
+            # Pass the file to the index.js script as an argument
+            node index.js "$file"
           done
 
-      - name: Run index.js
-        run: node index.js
       - name: Commit and Push Changes
         run: |
           git config --global user.email "chtalha.anjum@gmail.com"
