@@ -17,3 +17,13 @@ jobs:
           echo "::set-output name=file_path::./README.md"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.email "chtalha.anjum@gmail.com"
+          git config --global user.name "Talha Anjum"
+          git add .
+          git commit -m "Updated code"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
