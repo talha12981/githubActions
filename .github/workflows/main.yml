@@ -25,3 +25,8 @@ jobs:
         run: bash ./.github/scripts/copy_file.sh
         env:
           DESTINATION_PATH: ./models/
+      # make a branch in notehub-js repo and push the copy of the openapi file there
+      - name: Push to testGithubActions
+        run: bash ./.github/scripts/push_changes.sh
+        env:
+          BRANCH: main

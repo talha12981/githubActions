@@ -8,36 +8,13 @@ function l { # Log a message to the terminal.
 }
 
 # move to the root the notehub-js repo
-cd "./notehub-js"
-echo "Open root of Notehub JS repo"
-
-# check if there's already a currently existing feature branch in notehub-js for this branch
-# i.e. the altered openapi.yaml file's already been copied there at least once before
-echo "Check if feature branch $BRANCH already exists in Notehub JS"
-git ls-remote --exit-code --heads origin $BRANCH >/dev/null 2>&1
-EXIT_CODE=$?
-echo "EXIT CODE $EXIT_CODE"
-
-if [[ $EXIT_CODE == "0" ]]; then
-  echo "Git branch '$BRANCH' exists in the remote repository"
-  # fetch branches from notehub-js
-  git fetch
-  # stash currently copied openapi.yaml
-  git stash
-  # check out existing branch from notehub-js
-  git checkout $BRANCH 
-  # overwrite any previous openapi.yaml changes with current ones
-  git checkout stash -- .
-else
-  echo "Git branch '$BRANCH' does not exist in the remote repository"
-  # create a new branch in notehub-js 
-  git checkout -b $BRANCH
-fi
+cd "./testGithubActions"
+echo "Open root of testGithubActions repo"
 
 git add -A .
-git config user.name github-actions
-git config user.email github-actions@github.com
-git commit -am "feat: Update OpenAPI file replicated from Notehub"
+git config user.name "talha anjum"
+git config user.email "chtalha.anjum@gmail.com"
+git commit -am "feat: Update Model File"
 git push --set-upstream origin $BRANCH
 
-echo "Updated OpenAPI file successfully pushed to notehub-js repo"
+echo "Updated Model file successfully pushed to testGithubActions repo"
