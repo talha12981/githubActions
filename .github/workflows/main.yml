@@ -26,13 +26,11 @@ jobs:
         env:
           DESTINATION_PATH: ./testGithubActions/models/
 
-      - uses: actions/checkout@v2
-      - name: Find and Replace
-        uses: jacobtomlinson/gha-find-replace@v3
+      - uses: actions/checkout@v3
+      - uses: flcdrg/replace-multiple-action@v1
         with:
-          find: "test"
-          replace: "main"
-          include: "models/"
+          files: "../../models/test.model.lkml"
+          find: '[{ "find": "test", "replace": "main" }]'
 
       # make a branch in notehub-js repo and push the copy of the openapi file there
       - name: Push to testGithubActions
