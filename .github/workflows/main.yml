@@ -25,7 +25,16 @@ jobs:
         run: bash ./.github/scripts/copy_file.sh
         env:
           DESTINATION_PATH: ./testGithubActions/models/
-      # make a branch in notehub-js repo and push the copy of the openapi file there
+
+      - uses: actions/checkout@v2
+      - name: Find and Replace
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "test"
+          replace: "main"
+          regex: false
+
+          # make a branch in notehub-js repo and push the copy of the openapi file there
       - name: Push to testGithubActions
         run: bash ./.github/scripts/push_changes.sh
         env:
