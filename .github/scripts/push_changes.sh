@@ -7,14 +7,21 @@ function l { # Log a message to the terminal.
     echo -e "[$SCRIPT_NAME] ${1:-}"
 }
 
-# move to the root the notehub-js repo
+# Specify the Git repository and branch
+REPO_URL="https://github.com/talha12981/testGithubActions.git"
+BRANCH="main"
+
+# Change to the directory of your Git repository
+
 cd "./testGithubActions"
+# move to the root the testGithubActons repo
 echo "Open root of testGithubActions repo"
 
+# Add, commit, and push your code to the specified branch
 git add -A .
 git config user.name "talha anjum"
 git config user.email "chtalha.anjum@gmail.com"
 git commit -am "feat: Update Model File"
-git push --set-upstream origin $BRANCH
+git push "$REPO_URL" "$BRANCH"
 
 echo "Updated Model file successfully pushed to testGithubActions repo"

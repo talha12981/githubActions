@@ -18,13 +18,13 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: talha12981/testGithubActions
-          path: ./models
+          path: ./testGithubActions
           token: ${{ secrets.PAT }}
       # make a copy the openapi file from notehub project
       - name: Copy OpenAPI file
         run: bash ./.github/scripts/copy_file.sh
         env:
-          DESTINATION_PATH: ./models/
+          DESTINATION_PATH: ./testGithubActions/
       # make a branch in notehub-js repo and push the copy of the openapi file there
       - name: Push to testGithubActions
         run: bash ./.github/scripts/push_changes.sh
