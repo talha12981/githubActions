@@ -20,17 +20,16 @@ jobs:
           repository: talha12981/testGithubActions
           path: ./testGithubActions
           token: ${{ secrets.PAT }}
+
+      # make a branch in notehub-js repo and push the copy of the openapi file there
+      - name: Find and Replace
+        run: bash ./.github/scripts/findAndReplace.sh
+
       # make a copy the openapi file from notehub project
       - name: Copy OpenAPI file
         run: bash ./.github/scripts/copy_file.sh
         env:
           DESTINATION_PATH: ./testGithubActions/models/
-
-      - uses: actions/checkout@v3
-      - uses: flcdrg/replace-multiple-action@v1
-        with:
-          files: "../../models/test.model.lkml"
-          find: '[{ "find": "test", "replace": "main" }]'
 
       # make a branch in notehub-js repo and push the copy of the openapi file there
       - name: Push to testGithubActions
