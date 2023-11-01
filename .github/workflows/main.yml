@@ -32,6 +32,7 @@ jobs:
         with:
           find: "test"
           replace: "main"
+          include: "**test.model.lkml"
           regex: false
 
           # make a branch in notehub-js repo and push the copy of the openapi file there
