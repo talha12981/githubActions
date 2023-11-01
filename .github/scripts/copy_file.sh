@@ -14,7 +14,7 @@ OPENAPI_FILE=./models/test.model.lkml
 # if the file exists in Notehub, copy it to Notehub-JS repo
 if [ -f "$OPENAPI_FILE" ]; then
     echo "Copying $OPENAPI_FILE"
-    cp -R ./models/test.model.lkml $DESTINATION_PATH
+    cp -R ../../models/test.model.lkml $DESTINATION_PATH
 fi
 
 echo "OpenAPI file copied to $DESTINATION_PATH"
