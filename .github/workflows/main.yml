@@ -21,9 +21,13 @@ jobs:
           path: ./testGithubActions
           token: ${{ secrets.PAT }}
 
-      # make a branch in notehub-js repo and push the copy of the openapi file there
+      - uses: actions/checkout@v2
       - name: Find and Replace
-        run: bash ./.github/scripts/findAndReplace.sh
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "test"
+          replace: "main"
+          include: "models/"
 
       # make a copy the openapi file from notehub project
       - name: Copy OpenAPI file
