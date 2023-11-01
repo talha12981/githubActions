@@ -21,13 +21,11 @@ jobs:
           path: ./testGithubActions
           token: ${{ secrets.PAT }}
 
-      - uses: actions/checkout@v2
-      - name: Find and Replace
-        uses: jacobtomlinson/gha-find-replace@v3
+      - uses: actions/checkout@v3
+      - uses: flcdrg/replace-multiple-action@v1
         with:
-          find: "test"
-          replace: "main"
-          include: "models/"
+          files: "../../models/*.lkml"
+          find: '[{ "find": "test", "replace": "Main" }]'
 
       # make a copy the openapi file from notehub project
       - name: Copy OpenAPI file
