@@ -13,7 +13,7 @@ BRANCH="main"
 
 # Change to the directory of your Git repository
 
-cd "./testGithubActions/models/"
+cd "./testGithubActions/"
 # move to the root the testGithubActons repo
 echo "Open root of testGithubActions repo"
 
