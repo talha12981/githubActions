@@ -1,5 +1,5 @@
 # Define the database connection to be used for this model.
-connection: "test"
+connection: "testing"
 
 # Datagroups define a caching policy for an Explore. To learn more,
 # use the Quick Help panel on the right to see documentation.
